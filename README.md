@@ -84,6 +84,25 @@ MQTTSYNC-DASH/
 
 ```
 
+### 📂 Estructura del Backend
+```text
+backend/
+├── app/
+│   ├── core/               # Configuración global, seguridad JWT, base de datos
+│   └── modules/
+│       ├── auth/           # Login, Logout, Registro y generación de Tokens
+│       ├── users/          # Gestión de perfiles y permisos
+│       ├── telemetry/      # EL CORAZÓN: Aquí va la comunicación con el Broker
+│       │   ├── mqtt_service.py  # Conexión real con Mosquitto
+│       │   ├── schemas.py       # Validar datos del sensor
+│       │   └── service.py       # Procesar datos (ej: alertas si temp > 50)
+│       ├── stream/         # Gestión de WebSockets (envío al Frontend)
+│       └── devices/        # Gestión de las máquinas (ID, ubicación, estado)
+├── main.py                 # Punto de entrada
+└── requirements.txt
+```
+
+
 ## 🚀 Instalación Rápida
 
 Configuración del Frontend

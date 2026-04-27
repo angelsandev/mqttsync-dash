@@ -1,5 +1,12 @@
 # Servidor MQTT con Backend FASTAPI y Frontend React con Dashboard
 
+### [V0.0.2] Crear estructura Backend - 2026-4-27
+- **Pruebas:** ✅ Todo ok.  
+- **Pruebas:** ✅ Crear estructura de Backend con Vertical Slicing.
+- **Estructura:** Crear carpetas de Backend.
+- **Estructura:** Instalar todas las dependencias con el `requirements.txt`.
+- **Estructura:** Crear `main.py` con un router que devuelve un texto.
+
 ### [V0.0.1] Primer Dashboard. Crear proyecto React con Typescript - 2026-4-27
 - **Pruebas:** ✅ Todo ok.  
 - **Pruebas:** ✅ Crear proyecto React y Typescript y TailwindCSS.
