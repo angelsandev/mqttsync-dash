@@ -1,6 +1,9 @@
 from fastapi import FastAPI
 from app.modules.telemetry.mqtt_service import start_mqtt
 from contextlib import asynccontextmanager
+from app.modules.telemetry.router import router as telemetry_router
+
+
 
 
 # Arrancamos MQTT al iniciar la App
@@ -23,3 +26,4 @@ app = FastAPI(lifespan=lifespan)
 async def read_root():
     return {"status": "MQTTSYNC-DASH Backend está operativo"}
 
+app.include_router(telemetry_router)

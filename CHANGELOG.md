@@ -1,5 +1,12 @@
 # Servidor MQTT con Backend FASTAPI y Frontend React con Dashboard
 
+### [V0.0.5] Crear Endpoint - 2026-4-28
+- **Pruebas:** ✅ Todo ok.  
+- **Pruebas:** ✅ Crear un JSON en MQTT Explorer con los datos. Si accedemos al endpoint desde el navegador, se ven los datos de ese JSON recibido.
+- **Pruebas:** ✅ Probar `http://localhost:8000/telemetry/sensor01` y se ve el JSON.
+- **Estructura:** Crear `router.py` con endpoint para ser llamado desde el Frontend.
+
+
 ### [V0.0.4] Añadir Redis Upstash - 2026-4-28
 - **Pruebas:** ✅ Todo ok.  
 - **Pruebas:** ✅ Probado: enviar un dato desde MQTT Explorer `un JSON` y recibido en VSC correctamente.
