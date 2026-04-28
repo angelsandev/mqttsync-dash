@@ -12,10 +12,15 @@ from app.core.database import create_db_and_tables
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # --- Lo que ocurre al ARRANCAR ---
-    print("Preparando base de datos...")
-    create_db_and_tables() # Para crear las tablas en la BBDD
-    print("Iniciando conexión MQTT...")
+    # Forzamos la creación al entrar
+    try:
+        create_db_and_tables() # Para crear las tablas en la DB
+        print("🚀 Base de datos sincronizada")
+    except Exception as e:
+        print(f"❌ Error creando tablas: {e}")
+    
     start_mqtt() 
+    print("📡 MQTT iniciado")
     
     
     yield # Aquí es donde la app se queda funcionando

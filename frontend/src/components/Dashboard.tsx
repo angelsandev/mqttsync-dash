@@ -18,7 +18,7 @@ const Dashboard = () => {
         const fetchData = async () => {
             try {
                 // Llamar al endpoint de FASTAPI
-                const response = await axios.get('http://localhost:8000/telemetry/sensor01');
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/telemetry/sensor01`);
                 setData(response.data);
                 setLoading(false);
 

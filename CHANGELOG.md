@@ -1,5 +1,11 @@
 # Servidor MQTT con Backend FASTAPI y Frontend React con Dashboard
 
+### [V0.1.1] Cambios para Despliegue en VERCEL- 2026-4-28
+- **Pruebas:** ✅ Todo ok.
+- **Pruebas:** ✅ Crear variable entorno y frontend y crear proyecto Frontend en VERCEL.
+- **Estructura:** Crear `.env` en frontend con la variable que conteiene la URL del backend en VERCEL.
+- **Estructura:** Usar esa variable de entorno en la llamada `fetch` y evitar poner URL.
+
 ### [V0.1.0] Despliegue en VERCEL- 2026-4-28
 - **Pruebas:** ✅ Todo ok.
 - **Pruebas:** ✅ Modificar archivo `vercel.json`
