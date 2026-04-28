@@ -1,5 +1,9 @@
 # Servidor MQTT con Backend FASTAPI y Frontend React con Dashboard
 
+### [V0.1.0] Despliegue en VERCEL- 2026-4-28
+- **Pruebas:** ✅ Todo ok.
+- **Pruebas:** ✅ Modificar archivo `vercel.json`
+
 ### [V0.0.9] Despliegue en VERCEL- 2026-4-28
 - **Pruebas:** ✅ Todo ok.
 
