@@ -50,7 +50,7 @@ const Dashboard = () => {
             <p className="text-3xl font-bold text-blue-400">🌡️ {data.temperature} °C</p>
             <p className="text-3xl font-bold text-cyan-400">💧 {data.humidity} %</p>
             <div className="mt-4 text-xs text-slate-500">
-                Última actualización: {data.timestamp ? new Date(data.timestamp).toLocaleTimeString() : '---'}
+                Última actualización: {data.timestamp ? new Date(data.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '---'}
             </div>
         </div>
     );

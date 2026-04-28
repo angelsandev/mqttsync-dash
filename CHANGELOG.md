@@ -1,5 +1,12 @@
 # Servidor MQTT con Backend FASTAPI y Frontend React con Dashboard
 
+### [V0.1.3] Guardar datos en DB Postgres- 2026-4-29
+- **Pruebas:** ✅ Todo ok.
+- **Pruebas:** ✅ Añadir el guardado en la DB de Postgres.
+- **mqttservice.py:** Añadir lógica para guardar en Postgres.
+- **mqttservice.py:** Modificar lógica para que muestre correcto la hora en el dashboard, incluso si no se envía `timestamp` en el JSON.
+- **dashboard.tsx:** Modificar la línea para mostrar el timestamp correcto.
+
 ### [V0.1.2] Cambios para Despliegue en VERCEL- 2026-4-28
 - **Pruebas:** ✅ Todo ok.
 - **Pruebas:** ✅ 

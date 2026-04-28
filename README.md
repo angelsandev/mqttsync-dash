@@ -36,6 +36,51 @@ graph TD
 
 ---
 
+## 🛠️ Desarrollo en Local
+
+Para ejecutar el proyecto en tu máquina local y realizar pruebas, sigue estos pasos:
+
+### 1. Configuración de Variables de Entorno (.env)
+
+En local, el Frontend debe apuntar al servidor de Backend que corre en tu PC.
+
+* **Frontend:** En `/frontend/.env`, asegúrate de tener:
+    ```env
+    VITE_API_URL=http://localhost:8000
+    ```
+* **Backend:** Asegúrate de tener configuradas las variables de conexión a Redis (Upstash) y Postgres (Neon).
+
+### 2. Ejecución de los Servidores
+
+Debes tener dos terminales abiertas:
+
+* **Terminal Backend:**
+    ```bash
+    cd backend
+    uv run uvicorn main:app --reload
+    ```
+    *El servidor estará disponible en `http://localhost:8000`*
+
+* **Terminal Frontend:**
+    ```bash
+    cd frontend
+    npm run dev
+    ```
+    *La aplicación web estará disponible en `http://localhost:5173`*
+
+### 3. Despliegue (Importante)
+
+Antes de hacer un `git commit` y subir los cambios a producción (Vercel), **debes volver a cambiar la URL** en el archivo `.env` del frontend para que apunte a la URL de producción:
+
+```env
+VITE_API_URL=[https://tu-proyecto-backend.vercel.app]
+```
+
+---
+
+
+
+
 ## 🛠️ Stack Tecnológico
 
 ### **Frontend (Visualización)**
