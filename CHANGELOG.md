@@ -1,5 +1,14 @@
 # Servidor MQTT con Backend FASTAPI y Frontend React con Dashboard
 
+### [V0.0.7] Crear Base de datos y modelos- 2026-4-28
+- **Pruebas:** ✅ Todo ok.
+- **Pruebas:** ✅ Crear modelo de DB, crear una DB en Vercel con NEON (Postgres).
+- **Estructura:** Crear Base de datos `Postgres` en VERCEL, con `NEON`.
+- **Estructura:** Crear `models.py` que es la tabla de la DB.
+- **Estructura:** Crear el motor y sesión par ala DB : `database.py`
+
+
+
 ### [V0.0.6] Frontend para mostrar datos JSON en una Card- 2026-4-28
 - **Pruebas:** ✅ Todo ok.
 - **Pruebas:** ✅ Probar Frontend: escribimos un JSON en MQTT Explorer con los datos y, en el Frontend, a los 5 segunds aparece la Card con los datos actualizados.
