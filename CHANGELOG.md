@@ -1,5 +1,12 @@
 # Servidor MQTT con Backend FASTAPI y Frontend React con Dashboard
 
+### [V0.0.4] Añadir Redis Upstash - 2026-4-28
+- **Pruebas:** ✅ Todo ok.  
+- **Pruebas:** ✅ Probado: enviar un dato desde MQTT Explorer `un JSON` y recibido en VSC correctamente.
+- **Pruebas:** ✅ Añadir Redis con `Upstash Redis` para poder guardar en caché cuando se desplegue el proyecto en Vercel.
+- **Estructura:** Añadir `core/redis.py`
+- **mqttservice.py:** Añadir lógica para guardar los datos en REDIS.
+
 ### [V0.0.3] Crear Model Telemetry - 2026-4-28
 - **Pruebas:** ✅ Todo ok.  
 - **Pruebas:** ✅ Implementar código en módulo `telemetry`

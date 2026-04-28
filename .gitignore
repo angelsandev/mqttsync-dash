@@ -1,15 +1,30 @@
-# Node (Frontend)
+# --- Node (Frontend) ---
 frontend/node_modules/
 frontend/dist/
-frontend/.env
+frontend/.env*
+frontend/npm-debug.log*
 
-# Python (Backend)
+# --- Python (Backend) ---
 backend/venv/
+backend/.venv/
 backend/__pycache__/
-backend/.env
-*.pyc
+backend/.env*
+backend/*.pyc
+backend/.pytest_cache/
 
-# IDEs y Sistema
+# --- Firmware ---
+firmware/.pio/
+firmware/.vscode/
+firmware/build/
+firmware/*.bin
+firmware/*.elf
+
+# --- Base de Datos Local (si usaras SQLite) ---
+backend/*.sqlite3
+backend/*.db
+
+# --- IDEs y Sistema ---
 .vscode/
 .idea/
 .DS_Store
+Thumbs.db

@@ -3,7 +3,10 @@ uvicorn[standard]
 paho-mqtt
 python-jose[cryptography]
 passlib[bcrypt]
+bcrypt==4.0.1
 python-multipart
 python-dotenv
+pydantic-settings
 sqlmodel
 redis
+upstash-redis
