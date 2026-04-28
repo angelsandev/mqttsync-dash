@@ -1,5 +1,11 @@
 # Servidor MQTT con Backend FASTAPI y Frontend React con Dashboard
 
+### [V0.0.3] Crear Model Telemetry - 2026-4-28
+- **Pruebas:** ✅ Todo ok.  
+- **Pruebas:** ✅ Implementar código en módulo `telemetry`
+- **main.py:** Añadir llamada a función `start_mqtt` al arrancar la app, con `yield`.
+
+
 ### [V0.0.2] Crear estructura Backend - 2026-4-27
 - **Pruebas:** ✅ Todo ok.  
 - **Pruebas:** ✅ Crear estructura de Backend con Vertical Slicing.
