@@ -1,5 +1,7 @@
 import { Thermometer, Activity, Zap, Cpu } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import Dashboard from './components/Dashboard';
+
 
 // 1. Definimos la "forma" de nuestros datos (Contrato)
 interface TelemetryData {
@@ -52,7 +54,13 @@ export default function App() {
         </div>
       </header>
 
+      {/* SECCIÓN DE TARJETAS */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+
+        {/* Componente Dashboard con los datos JSON */}
+        <Dashboard />
+
+        {/* Tarjetas de pruebas */}
         <StatCard title="Máquina 01" value="24.5°C" icon={<Thermometer className="text-blue-400" />} trend="+1.2%" />
         <StatCard title="Máquina 02" value="28.1°C" icon={<Thermometer className="text-orange-400" />} trend='-0.5%' />
         <StatCard title="Consumo" value="1.2 kW" icon={<Zap className="text-yellow-400" />} trend="Estable" />
@@ -70,7 +78,7 @@ export default function App() {
               <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
               <XAxis dataKey="time" stroke="#64748b" />
               <YAxis stroke="#64748b" />
-              <Tooltip 
+              <Tooltip
                 contentStyle={{ backgroundColor: '#0f172a', border: '1px solid #1e293b', borderRadius: '8px' }}
               />
               <Line type="monotone" dataKey="temp" stroke="#38bdf8" strokeWidth={3} dot={{ r: 4 }} />

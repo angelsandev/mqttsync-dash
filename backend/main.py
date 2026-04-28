@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from app.modules.telemetry.mqtt_service import start_mqtt
 from contextlib import asynccontextmanager
 from app.modules.telemetry.router import router as telemetry_router
-
+from fastapi.middleware.cors import CORSMiddleware
 
 
 
@@ -27,3 +27,12 @@ async def read_root():
     return {"status": "MQTTSYNC-DASH Backend está operativo"}
 
 app.include_router(telemetry_router)
+
+# Configuración CORS para permitir solicitudes desde el frontend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], # En producción pondremos la URL de Vercel
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)

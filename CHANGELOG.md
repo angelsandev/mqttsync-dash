@@ -1,5 +1,12 @@
 # Servidor MQTT con Backend FASTAPI y Frontend React con Dashboard
 
+### [V0.0.6] Frontend para mostrar datos JSON en una Card- 2026-4-28
+- **Pruebas:** ✅ Todo ok.
+- **Pruebas:** ✅ Probar Frontend: escribimos un JSON en MQTT Explorer con los datos y, en el Frontend, a los 5 segunds aparece la Card con los datos actualizados.
+- **Estructura:** Añadir componente `Dashboard` React para `Card` que muestre los datos recibidos del `JSON`.
+- **Estructura:** Llamar al componente desde `App.tsx` para mostrar esa card junto a las otras.
+- **main.py:** Añadir `CORS`
+
 ### [V0.0.5] Crear Endpoint - 2026-4-28
 - **Pruebas:** ✅ Todo ok.  
 - **Pruebas:** ✅ Crear un JSON en MQTT Explorer con los datos. Si accedemos al endpoint desde el navegador, se ven los datos de ese JSON recibido.
