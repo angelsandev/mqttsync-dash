@@ -41,7 +41,10 @@ app.include_router(telemetry_router)
 # Configuración CORS para permitir solicitudes desde el frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # En producción pondremos la URL de Vercel
+    allow_origins=[
+                   "https://mqttsync-dash-frontend.vercel.app",  # URL de front actual
+                    "http://localhost:5173",                 # Para probar en local
+                   ], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -1,5 +1,13 @@
 # Servidor MQTT con Backend FASTAPI y Frontend React con Dashboard
 
+### [V0.1.2] Cambios para Despliegue en VERCEL- 2026-4-28
+- **Pruebas:** ✅ Todo ok.
+- **Pruebas:** ✅ 
+- **.env:** Modificar `.env` en frontend: la URL tenía una `/` al final que no debe existir.
+- **Vercel Front:** En proyecto de frontend en Vercel, configurar la variable de entorno, eliminando esa `/` al final.
+- **main.py:** En el `CORS` colocar la URL del frontend par apermitir la conexión.
+
+
 ### [V0.1.1] Cambios para Despliegue en VERCEL- 2026-4-28
 - **Pruebas:** ✅ Todo ok.
 - **Pruebas:** ✅ Crear variable entorno y frontend y crear proyecto Frontend en VERCEL.
