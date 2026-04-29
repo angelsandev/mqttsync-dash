@@ -1,6 +1,8 @@
 import { Thermometer, Activity, Zap, Cpu } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import Dashboard from './components/Dashboard';
+import { MainLayout}  from './layouts/MainLayout';
+
 
 
 // 1. Definimos la "forma" de nuestros datos (Contrato)
@@ -40,7 +42,9 @@ const StatCard = ({ title, value, icon, trend }: CardProps) => (
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 p-8">
+    
+      <MainLayout>
+      
       <header className="mb-10 flex items-center justify-between border-b border-slate-800 pb-6">
         <div>
           <h1 className="text-3xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
@@ -86,6 +90,9 @@ export default function App() {
           </ResponsiveContainer>
         </div>
       </div>
-    </div>
+
+</MainLayout>
+
+    
   );
 }

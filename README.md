@@ -117,21 +117,26 @@ VITE_API_URL=[https://tu-proyecto-backend.vercel.app]
 
 ```text
 MQTTSYNC-DASH/
-├── frontend/           # Proyecto React + TypeScript (Vite)
-│   ├── src/            # Componentes y lógica de UI
-│   ├── tailwind.config.js
-│   └── tsconfig.json
-├── backend/            # Servidor FastAPI (Python)
-│   ├── main.py         # Punto de entrada
-│   └── requirements.txt
-├── .gitignore          # Exclusiones de Git (node_modules, venv, .env)
-└── README.md           # Documentación del proyecto
+frontend/            # Proyecto React + TypeScript (Vite)
+src/
+├── assets/          # Imágenes, logos, fuentes.
+├── components/      # Componentes "Átomos" (Botones, Inputs, el Navbar). 
+│                    # Son los que se usan en todo el proyecto.
+├── features/        # El corazón del Vertical Slicing.
+│   ├── telemetry/   # Todo lo relacionado con los sensores.
+│   │   ├── components/    # StatCard.tsx, TelemetryChart.tsx.
+│   │   ├── hooks/         # useTelemetry.ts (tu lógica de Axios/Interval).
+│   │   └── services/      # api.ts (funciones que llaman al backend).
+├── context/         # Aquí irá el modo Oscuro/Claro (ThemeContext).
+├── layouts/         # Estructuras de página (ej. MainLayout con el Navbar).
+├── App.tsx          # Punto de entrada.
+└── main.tsx         # Configuración de React.
 
 ```
 
 ### 📂 Estructura del Backend
 ```text
-backend/
+backend/                    # Servidor FastAPI (Python)
 ├── app/
 │   ├── core/               # Configuración global, seguridad JWT, base de datos
 │   └── modules/

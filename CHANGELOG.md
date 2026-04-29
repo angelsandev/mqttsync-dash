@@ -1,5 +1,15 @@
 # Servidor MQTT con Backend FASTAPI y Frontend React con Dashboard
 
+### [V0.1.4] Modo Oscuro y Estructurar Frontend- 2026-4-29
+- **Pruebas:** ✅ Todo ok.
+- **Pruebas:** ✅ Crear estructura en frontend basado en separación de responsabilidades.
+- **Estructura:** Crear carpetas para separación responsabilidades.
+- **MainLayout:** Aquí se crea lo que será común en todas las páginas.
+- **Modo oscuro:** Crear lo que se llama `ContextAPI`, con `ThemeContext.tsx`. 
+- **main.tsx:** Llamar al `ThemeProvider ` que hemos creado en `ThemeContext` para aplicar el modo oscuro y light.
+- **NavBar.tsx:** Crear componente para menú navegación, incluyendo botón modo oscuro. 
+- **index.css:** Crear un `variant` para que Tailwind acepte la clase `dark`.
+
 ### [V0.1.3] Guardar datos en DB Postgres- 2026-4-29
 - **Pruebas:** ✅ Todo ok.
 - **Pruebas:** ✅ Añadir el guardado en la DB de Postgres.
