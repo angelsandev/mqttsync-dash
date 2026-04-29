@@ -19,16 +19,16 @@ PROJECT_PREFIX = "mqsync"
 # Inicializamos el cliente
 redis_client = Redis(url=REDIS_URL, token=REDIS_TOKEN)
 
-def save_telemetry_cache(device_id: str, data: dict):
+def save_telemetry_cache(machine_id: str, device_id: str, data: dict):
     """
     Guarda el último valor de una máquina en Redis.
     Key resultante ejemplo: mqsync:device:maquina_01:current
     """
-    key = f"{PROJECT_PREFIX}:device:{device_id}:current"
+    key = f"{PROJECT_PREFIX}:{machine_id}:{device_id}:current"
     # Guardamos el JSON completo del dato (temp, humedad, etc.)
     redis_client.set(key, data)
 
-def get_telemetry_cache(device_id: str):
+def get_telemetry_cache(machine_id: str,device_id: str):
     """Recupera el último valor guardado de una máquina"""
-    key = f"{PROJECT_PREFIX}:device:{device_id}:current"
+    key = f"{PROJECT_PREFIX}:{machine_id}:{device_id}:current"
     return redis_client.get(key)

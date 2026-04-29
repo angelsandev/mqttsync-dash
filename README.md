@@ -1,9 +1,18 @@
 # React + TypeScript + Vite + FASTAPI
 
+[![Python](https://img.shields.io/badge/Python-3.13+-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-v0.115+-005863?style=flat&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![React](https://img.shields.io/badge/React-v19-20232A?style=flat&logo=react&logoColor=61DAFB)](https://react.dev/)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-v4.0-38B2AC?style=flat&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Neon-316192?style=flat&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![Redis](https://img.shields.io/badge/Redis-Upstash-DC382D?style=flat&logo=redis&logoColor=white)](https://redis.io/)
+[![MQTT](https://img.shields.io/badge/MQTT-HiveMQ-660066?style=flat&logo=mqtt&logoColor=white)](https://mqtt.org/)
+[![Vercel](https://img.shields.io/badge/Deployment-Vercel-000000?style=flat&logo=vercel&logoColor=white)](https://vercel.com/)
+[![Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)]()
+
 # 🚀 MQTTSync-Dash: Industrial IoT Real-Time Monitor
 
-**MQTTSync-Dash** es un ecosistema Fullstack diseñado para la monitorización avanzada de telemetría industrial. Este sistema permite capturar datos de maquinaria, procesarlos a través de un servidor central y visualizarlos en tiempo real mediante una interfaz web moderna y tipada.
-
+**MQTTSync-Dash** es un ecosistema Fullstack diseñado para la monitorización avanzada de telemetría industrial. El sistema permite la ingesta masiva de datos procedentes de múltiples máquinas y sensores, procesándolos en un entorno de alta disponibilidad y visualizándolos en tiempo real.
 ---
 
 ## 📊 Flujo de Datos y Arquitectura
@@ -33,6 +42,63 @@ graph TD
     style FA fill:#009485,stroke:#fff,color:#fff
     style R fill:#61dafb,stroke:#333
 ```
+
+
+
+---
+## 🏗️ Arquitectura del Sistema
+
+El sistema está diseñado bajo una arquitectura de **Vertical Slicing** y gestiona los datos de la siguiente manera:
+
+1.  **Ingesta (MQTT):** Captura datos dinámicos de múltiples máquinas mediante topics jerárquicos (`factory/{machine_id}/telemetry/{device_id}`).
+2.  **Procesamiento (FastAPI):** Un servicio especializado extrae la identidad de la máquina y del sensor, validando la integridad de los datos industriales (RSSI, Uptime, IPs locales, etc.).
+3.  **Almacenamiento Dual:**
+    * **Tiempo Real (Redis/Upstash):** Almacena el último estado de cada sensor para una respuesta instantánea (< 50ms).
+    * **Histórico (Postgres/Neon):** Persiste cada lectura para análisis de tendencias y gráficas históricas.
+4.  **Visualización (React + Tailwind v4):** Una interfaz moderna que se adapta dinámicamente a las máquinas detectadas en el sistema.
+
+## 📡 Endpoints de la API
+
+La API está documentada con Swagger y expone los siguientes puntos de acceso principales:
+
+### Máquinas y Configuración
+* `GET /telemetry/machines`: Devuelve una lista única de todas las máquinas (`machine_id`) registradas en el sistema.
+
+### Datos de Telemetría
+* `GET /telemetry/current/{machine_id}/{device_id}`: Obtiene el último estado conocido de un sensor específico desde la caché de **Redis**.
+* `GET /telemetry/history/{machine_id}`: Recupera los últimos 50 registros (configurable) de una máquina específica desde **Postgres** para visualización de gráficas.
+
+---
+
+## 🧪 Cómo probar el sistema (Paso a Paso)
+
+Para verificar el funcionamiento del ecosistema completo, sigue estos pasos:
+
+### 1. Acceso a la Interfaz
+Entra en la URL de producción (Vercel) o local: `http://localhost:5173`. Verás que el sistema detecta automáticamente las máquinas activas.
+
+### 2. Simulación de Datos (MQTT Explorer / HiveMQ)
+Para enviar datos como si fueras una máquina real:
+1.  Abre **MQTT Explorer** o el [HiveMQ Web Client](http://www.hivemq.com/demos/websocket-client/).
+2.  Conéctate al broker: `broker.hivemq.com` (Puerto 1883).
+3.  Publica un mensaje en el siguiente formato:
+    * **Topic:** `factory/prensa-01/telemetry/sensor-t01`
+    * **Payload (JSON):**
+        ```json
+        {
+          "status": "online",
+          "temperature": 24.5,
+          "pressure": 1.2,
+          "rssi": -65,
+          "local_ip": "192.168.1.50",
+          "uptime": 3600
+        }
+        ```
+
+### 3. Verificación
+* **Frontend:** La card de la "prensa-01" debería aparecer o actualizarse con los nuevos valores.
+* **API:** Accede a `/docs` en el backend para verificar que el JSON se ha persistido correctamente en la base de datos SQL.
+
 
 ---
 
@@ -97,8 +163,8 @@ VITE_API_URL=[https://tu-proyecto-backend.vercel.app]
 
 ### **Infraestructura de Red**
 * **MQTT (Mosquitto):** Protocolo ligero ideal para entornos industriales con ancho de banda limitado.
-* **Servidor Ubuntu:** Despliegue del Broker y servicios de backend.
-* **Docker (Opcional):** Para el despliegue del Broker Mosquitto.
+* **Postgres(NEON):** Database.
+* **Vercel/Render:** Despliegue en Vercel como hosting.
 
 ---
 
@@ -106,8 +172,8 @@ VITE_API_URL=[https://tu-proyecto-backend.vercel.app]
 
 - [x] **Fase 1: Estructura Base** - Configuración del monorepo y entorno de Git.
 - [x] **Fase 2: Frontend Inicial** - Diseño del Dashboard con Tailwind y React TS (Datos simulados).
-- [ ] **Fase 3: Backend FastAPI** - Creación del servidor, gestión de logs y cliente MQTT.
-- [ ] **Fase 4: Broker MQTT** - Configuración de Mosquitto en Ubuntu y pruebas de conectividad.
+- [x] **Fase 3: Backend FastAPI** - Creación del servidor, gestión de logs y cliente MQTT.
+- [x] **Fase 4: Broker MQTT** - Configuración de Mosquitto en Ubuntu y pruebas de conectividad.
 - [ ] **Fase 5: Integración Real** - Conexión de WebSockets para que las gráficas se muevan con datos reales.
 - [ ] **Fase 6: Seguridad y Optimización** - Implementación de autenticación JWT y caché con Redis para los históricos.
 

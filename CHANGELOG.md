@@ -1,5 +1,17 @@
 # Servidor MQTT con Backend FASTAPI y Frontend React con Dashboard
 
+### [V0.1.5] Backend para múltiples datos - 2026-4-29
+- **Pruebas:** ✅ Todo ok.
+- **Pruebas:** ✅ Probar Backend, conectar MQTTExplorer y enviar un TOPIC con sus datos. Se ve la tabla Postgres (en VERCEL) creada correctamente con los datos enviados.
+- **Pruebas:** ✅ Se trata de modificar los models para recibir datos de varias maquinas y clasificar cada sensor segun la maquina a la que pertenece.
+- **models.py:** Añadir campos para la tabla de la DB.
+- **mqttservice.py:** Modificar la lógica para el nuevo TOPIC y los nuevos datos que debe leer.
+- **schemas.py:** Añadir campos, atributos y separar por clases con Herencia.
+- **router.py:** Nuevas rutas y llamadas utilizando las clases del schemas.
+- **redis.py:** Modificar la llave, ya que ahora se utiliza una doble llave como parametro.
+
+
+
 ### [V0.1.4] Modo Oscuro y Estructurar Frontend- 2026-4-29
 - **Pruebas:** ✅ Todo ok.
 - **Pruebas:** ✅ Crear estructura en frontend basado en separación de responsabilidades.
