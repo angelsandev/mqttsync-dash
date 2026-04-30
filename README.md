@@ -13,6 +13,7 @@
 # 🚀 MQTTSync-Dash: Industrial IoT Real-Time Monitor
 
 **MQTTSync-Dash** es un ecosistema Fullstack diseñado para la monitorización avanzada de telemetría industrial. El sistema permite la ingesta masiva de datos procedentes de múltiples máquinas y sensores, procesándolos en un entorno de alta disponibilidad y visualizándolos en tiempo real.
+
 ---
 
 ## 📊 Flujo de Datos y Arquitectura
@@ -239,3 +240,7 @@ pip install -r requirements.txt
 ---
 
 > Desarrollado con el objetivo de modernizar la supervisión de procesos industriales. 🛠️
+
+---
+
+Desarrollado con ❤️ por Ángel Sánchez

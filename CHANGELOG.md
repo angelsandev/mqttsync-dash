@@ -1,5 +1,13 @@
 # Servidor MQTT con Backend FASTAPI y Frontend React con Dashboard
 
+### [V0.1.6] Frontend llamadas a nuevos endpoints - 2026-4-30
+- **Pruebas:** ✅ Todo ok.
+- **Pruebas:** ✅ Crear tipos de datos, servicios y llamadas a nuevos endpoints.
+- **Pruebas:** ✅ Se visualizan las cards con los datos que hay en el sistema guardados. Si introducimos unos datos en MQTTExplorer, se pintará la card en el Frontend con esos datos de máquina nueva. (Hay que actualizar el navegador).
+- **Estructura:** Crear `services`,`hooks` y `types` donde se define el tipo de dato a recibir, se hacen las llamadas endpoints según el `router del backend`.
+- **Dashboard:** Modificar lógica para visualizar las cards creadas con los datos de las máquinas que hay almacenadas. 
+- **MachineCard:** Lógica donde se llama al endpoint y se cogen los datos de las máquinas para ponerla en las cards.
+
 ### [V0.1.5] Backend para múltiples datos - 2026-4-29
 - **Pruebas:** ✅ Todo ok.
 - **Pruebas:** ✅ Probar Backend, conectar MQTTExplorer y enviar un TOPIC con sus datos. Se ve la tabla Postgres (en VERCEL) creada correctamente con los datos enviados.

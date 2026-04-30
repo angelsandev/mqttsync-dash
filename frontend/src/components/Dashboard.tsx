@@ -1,59 +1,28 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-
-interface TelemetryResponse {
-    device_id: string;
-    status: string;
-    temperature: number;
-    humidity: number;
-    timestamp: string;
-}
+import { useMachines } from '../features/telemetry/hooks/useTelemetry';
+import { MachineCard } from '../features/telemetry/components/MachineCard';
 
 const Dashboard = () => {
-    const [data, setData] = useState<TelemetryResponse | null>(null);
-    const [loading, setLoading] = useState(true);
+    const { machines, loading, error } = useMachines();
 
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                // Llamar al endpoint de FASTAPI
-                const response = await axios.get(`${import.meta.env.VITE_API_URL}/telemetry/sensor01`);
-                setData(response.data);
-                setLoading(false);
-
-            } catch (error) {
-                console.error("Error recuperando datos:", error);
-                setLoading(false);
-            }
-        }
-
-
-        fetchData(); // Primera carga
-
-        // Actualizar cada 5 segundos para que sea "tiempo real"
-        const interval = setInterval(fetchData, 5000); // Polling cada 5 segundos
-        return () => clearInterval(interval);
-    }, []);// Array vacío = solo se ejecuta al montar
-
-    if (loading) return <p className="text-white">Cargando telemetría...</p>;
-    
-    // Si no hay data después de cargar, mostramos error
-    if (!data) return <p className="text-white">No hay datos del sensor.</p>;
-
+    if (loading) return <div className="p-10 text-slate-600 dark:text-slate-400">Buscando máquinas activas...</div>;
+    if (error) return <div className="p-10 text-red-500">{error}</div>;
 
     return (
-        <div className="bg-slate-900 p-5 rounded-2xl border border-slate-800 shadow-lg text-white">
-            <h2 className="text-xl font-bold mb-2">Estado de: {data.device_id}</h2>
-            <p className="text-slate-400"><strong>Estado:</strong> {data.status}</p>
-            <hr className="my-4 border-slate-700" />
-            <p className="text-3xl font-bold text-blue-400">🌡️ {data.temperature} °C</p>
-            <p className="text-3xl font-bold text-cyan-400">💧 {data.humidity} %</p>
-            <div className="mt-4 text-xs text-slate-500">
-                Última actualización: {data.timestamp ? new Date(data.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '---'}
+        // bg-white para luz, bg-slate-950 para oscuro
+        <div className="w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {machines.map((machineId) => (
+                    <MachineCard key={machineId} machineId={machineId} />
+                ))}
             </div>
+
+            {machines.length === 0 && (
+                <div className="text-slate-500 text-center py-20 border-2 border-dashed border-slate-800 rounded-3xl">
+                    No se han detectado máquinas en el sistema.
+                </div>
+            )}
         </div>
     );
-
 };
+
 export default Dashboard;

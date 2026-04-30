@@ -1,7 +1,7 @@
-import { Thermometer, Activity, Zap, Cpu } from 'lucide-react';
+//import { Thermometer, Activity, Zap, Cpu } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import Dashboard from './components/Dashboard';
-import { MainLayout}  from './layouts/MainLayout';
+import { MainLayout } from './layouts/MainLayout';
 
 
 
@@ -20,13 +20,16 @@ const data: TelemetryData[] = [
 ];
 
 // 2. Tipamos las Props del componente
+/*
 interface CardProps {
   title: string;
   value: string;
   icon: React.ReactNode;
   trend: string;
 }
+*/
 
+/*
 const StatCard = ({ title, value, icon, trend }: CardProps) => (
   <div className="bg-slate-900 p-5 rounded-2xl border border-slate-800 shadow-lg">
     <div className="flex justify-between items-start mb-4">
@@ -39,12 +42,15 @@ const StatCard = ({ title, value, icon, trend }: CardProps) => (
     <p className="text-2xl font-bold mt-1 text-white">{value}</p>
   </div>
 );
+*/
+
+
 
 export default function App() {
   return (
-    
-      <MainLayout>
-      
+
+    <MainLayout>
+
       <header className="mb-10 flex items-center justify-between border-b border-slate-800 pb-6">
         <div>
           <h1 className="text-3xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
@@ -58,22 +64,33 @@ export default function App() {
         </div>
       </header>
 
+
+      {/* Componente Dashboard con los datos JSON */}
+      <div className="mb-10">
+        <Dashboard />
+      </div>
+
+
       {/* SECCIÓN DE TARJETAS */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
 
-        {/* Componente Dashboard con los datos JSON */}
-        <Dashboard />
+
 
         {/* Tarjetas de pruebas */}
+        {/*}
         <StatCard title="Máquina 01" value="24.5°C" icon={<Thermometer className="text-blue-400" />} trend="+1.2%" />
         <StatCard title="Máquina 02" value="28.1°C" icon={<Thermometer className="text-orange-400" />} trend='-0.5%' />
         <StatCard title="Consumo" value="1.2 kW" icon={<Zap className="text-yellow-400" />} trend="Estable" />
         <StatCard title="CPU" value="14%" icon={<Cpu className="text-purple-400" />} trend="Baja" />
+      */}
+
       </div>
 
       <div className="bg-slate-900 p-6 rounded-2xl border border-slate-800 shadow-2xl">
         <div className="flex items-center gap-2 mb-6">
+          {/*}
           <Activity className="text-blue-400" size={20} />
+          */}
           <h2 className="text-xl font-semibold">Temperatura en Tiempo Real</h2>
         </div>
         <div className="h-75 w-full">
@@ -91,8 +108,8 @@ export default function App() {
         </div>
       </div>
 
-</MainLayout>
+    </MainLayout>
 
-    
+
   );
 }

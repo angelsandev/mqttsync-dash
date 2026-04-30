@@ -23,5 +23,5 @@ def create_db_and_tables():
 
 # Generador de Sesiones: Para que FastAPI pueda pedir una conexión cuando la necesite 
 def get_session():
-    with Session as session:
+    with Session(engine) as session:
         yield session
