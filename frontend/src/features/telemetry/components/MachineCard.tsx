@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { telemetryService } from '../services/telemetryService';
 import type { TelemetryData } from '../types/types';
+import {Link} from 'react-router-dom';
 
 
 interface Props {
@@ -38,6 +39,8 @@ export const MachineCard = ({ machineId }: Props) => {
 
 
     return (
+        /* Envolver todo en un Link que apunte a /machine/id */
+        <Link to= {`/machine/${machineId}`} className="block transition-transform hover:scale-[1.01]">
         <div className="
             bg-white dark:bg-slate-900 
             p-6 rounded-2xl 
@@ -84,6 +87,7 @@ export const MachineCard = ({ machineId }: Props) => {
                 <span className="shrink-0 text-right">RSSI: {lastData.rssi} dBm</span>
             </div>
         </div>
+        </Link>
     );
 
 

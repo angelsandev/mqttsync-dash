@@ -11,7 +11,16 @@ database_url = os.getenv("DATABASE_URL") or os.getenv("POSTGRES_URL")
 
 # 2. El Engine: El objeto que mantiene la conexión abierta
 # El argumento 'echo=True' sirve para ver en la terminal las consultas SQL reales
-engine = create_engine(database_url,echo=True)
+engine = create_engine(
+    database_url,
+    # Cierra las conexiones que lleven más de 300 segundos (5 min) inactivas
+    pool_recycle=300,
+    # Antes de usar una conexión, lanza un "SELECT 1" para ver si responde
+    pool_pre_ping=True,
+    # Evita que se queden demasiadas conexiones colgadas
+    pool_size=5,
+    max_overflow=10,
+    echo=True)
 
 
 def create_db_and_tables():

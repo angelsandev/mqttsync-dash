@@ -1,5 +1,13 @@
 # Servidor MQTT con Backend FASTAPI y Frontend React con Dashboard
 
+### [V0.1.8] Rutas en el Frontend - 2026-4-30
+- **Pruebas:** ✅ Todo ok.
+- **Pruebas:** ✅ Probar todas la cards, datos de sensores, graficas y enrutamiento ok.
+- **Estructura:** Crear componentes `Sensorcards` `MachineStats` `Machinecard` de manera que queda tod más estructurado. Si quiero añadir un sensor, iré a `Sensorcards` y lo añado.
+- **MachineDetail:** Desde aquí se llama a los sensorcards y machineStats y graficas.
+- **App.tsx:** Desde aquí se esriben las rutas. En la ruta de máquins, por ejemplo, se llama a `MachineDetail`.
+
+
 ### [V0.1.7] Polling automático - 2026-4-30
 - **Pruebas:** ✅ Todo ok.
 - **Pruebas:** ✅ Actualizar las Cards automáticamente cada vez que se introducen datos en MQTTExplorer.
