@@ -24,10 +24,10 @@ export const MachineCard = ({ machineId }: Props) => {
         };
         fetchCurrent(); // Carga inicial
         // Polling cada 5 segundos
-        /*
+        
          const interval = setInterval(fetchCurrent, 5000);
          return () => clearInterval(interval);
- */
+ 
     }, [machineId]);
 
     if (!lastData) return (

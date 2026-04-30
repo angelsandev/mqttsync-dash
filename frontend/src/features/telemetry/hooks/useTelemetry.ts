@@ -7,9 +7,9 @@ export const useMachines = () => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        const loadMachines = async () => {
+        const loadMachines = async (isFirstLoading: boolean) => {
             try {
-                setLoading(true);
+                if(isFirstLoading) setLoading(true);// Solo mostramos spinner la primera vez
                 const data = await telemetryService.getMachines();
                 setMachines(data);
                 setError(null);
@@ -20,17 +20,17 @@ export const useMachines = () => {
                 setLoading(false);
             }
         };
-        loadMachines();
+        loadMachines(true);// Carga inicial con spinner
 
-        // CONFIGURA EL POLLING automático: pide datos cada 5 seg
-        /*
+        // CONFIGURA EL POLLING automático: pide datos cada 5 seg (sin spinner)
+        
         const interval = setInterval(() => {
-            loadMachines();
+            loadMachines(false);
         }, 5000); // 5 segundos
 
         // LIMPIEZA (Esto evita fugas de memoria)
         return () => clearInterval(interval);
-*/
+
 
     }, []);
 

@@ -1,5 +1,12 @@
 # Servidor MQTT con Backend FASTAPI y Frontend React con Dashboard
 
+### [V0.1.7] Polling automático - 2026-4-30
+- **Pruebas:** ✅ Todo ok.
+- **Pruebas:** ✅ Actualizar las Cards automáticamente cada vez que se introducen datos en MQTTExplorer.
+- **MachineCard:** Lógica `setInterval` para Polling cada 5 segundos.
+- **useTelemetry.ts:** Lógica para que el spinner `loading` solo se ejecute la primera vez que se llama a la función. Después, en el Polling cada 5 seg, no habrá loading. 
+
+
 ### [V0.1.6] Frontend llamadas a nuevos endpoints - 2026-4-30
 - **Pruebas:** ✅ Todo ok.
 - **Pruebas:** ✅ Crear tipos de datos, servicios y llamadas a nuevos endpoints.
